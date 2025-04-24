@@ -9,15 +9,17 @@ async def main():
 
     
     config = {
-      "mcpServers": {
-        "playwright": {
-          "command": "npx",
-          "args": ["@playwright/mcp@latest"],
-          "env": {
-            "DISPLAY": ":1"
-          }
-        }
-      }
+      
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
+
+
     }
 
     client = MCPClient.from_dict(config)
@@ -28,7 +30,7 @@ async def main():
     agent = MCPAgent(llm=llm, client=client, max_steps=30)
 
     result = await agent.run(
-        "what is the weather now in tunis",
+        "tell me the weather in tunis by using the tools",
     )
     print(f"\nResult: {result}")
 
